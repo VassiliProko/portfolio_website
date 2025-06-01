@@ -1,0 +1,5 @@
+title: My Awesome Site
+description: A simple site hosted with GitHub Pages
+theme: minima
+baseurl: ""
+url: "https://username.github.io"
