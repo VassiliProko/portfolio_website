@@ -8,15 +8,18 @@ no_navbar: true
     <div class="vp-bg">VP</div>
     <nav class="navbar">
         <div class="col-30">
-            <a href="index.html">
+            <a href="index">
                 VASSILI PROKOPENKO
             </a>
+            <button id="menu-toggle" class="hamburger">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu"><path d="M4 12h16"/><path d="M4 18h16"/><path d="M4 6h16"/></svg>
+            </button>
         </div>
         <div class="navbarRight">
             <a href="#main" class="mr-20">
                 WORK
             </a>
-            <a href="play.html">
+            <a href="play">
                 PLAY
             </a>
             <div class="contact">
@@ -24,6 +27,11 @@ no_navbar: true
             </div>
         </div>
     </nav>
+    <div class="hamburger-menu" id="mobile-menu">
+        <a href="#main">WORK</a>
+        <a href="play">PLAY</a>
+        <a href="mailto:vassiligb12@gmail.com">CONTACT</a>
+    </div>
     <header>
         <div class="about col-30">
             <h1 class="mb-20">ABOUT</h1>
@@ -69,7 +77,7 @@ no_navbar: true
         </div>
         <div class="col-70">
             <div class="project-image">
-                <a href="prettify-minerva.html">
+                <a href="prettify-minerva">
                     <img src="images/index/prettify_minerva_project.png" alt="Prettify Minerva Project Image">
                 </a>
             </div>
@@ -96,7 +104,7 @@ no_navbar: true
                 </div>
                 <div class="project-row">
                     <div class="project-left"><h2>Role</h2></div>
-                    <div class="project-right">Webmaster</div>
+                    <div class="project-right">Web Developer</div>
                 </div>
                 <div class="project-row">
                     <div class="project-left"><h2>Type</h2></div>
@@ -110,7 +118,7 @@ no_navbar: true
         </div>
         <div class="col-70">
             <div class="project-image">
-                <div style="font-size: 100px; margin-left: 30px; color: #959595;">COMING SOON</div>
+                <div style="font-size: 100px; margin-left: 30px; color: #959595; user-select: none;">COMING SOON</div>
             </div>
         </div>
     </div>

@@ -27,7 +27,8 @@ body.index-page {
 body.index-page a,
 body.index-page a:hover,
 body.index-page a:focus,
-body.index-page a:active {
+body.index-page a:active,
+body.index-page button {
     cursor: none;
 }
 
@@ -139,6 +140,13 @@ p {
     max-width: 70%;
 }
 
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: var(--white-color);
+}
+
 .full-height-row {
     display: flex;
 }
@@ -161,6 +169,51 @@ p {
     flex: 1 1 70%;
     max-width: 70%;
     padding: 20px;
+}
+
+.hamburger-menu, .hamburger {
+    display: none;
+}
+@media screen and (max-width: 768px) { 
+    .row, .full-height-row {
+        flex-direction: column;
+    }
+
+    .col-30, .col-70, .left-col, .right-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .left-col {
+        position: static;
+    }
+
+    .hamburger-menu {
+        display: none;
+        position: fixed;
+        width: 100%;
+        flex-direction: column;
+        top: 60px;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 222;
+        gap: 1rem;
+    }
+
+    .hamburger-menu.show {
+        display: flex;
+        background-color: var(--white-color);
+    }
+
+    .hamburger {
+        background: none;
+        display: inline-block;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        margin-left: auto;
+    }
 }
 
 .right-col img {
@@ -253,13 +306,6 @@ a {
     color: var(--link-color);
     transition: color 0.3s ease;
     text-decoration: underline;
-}
-
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    background-color: var(--white-color);
 }
 
 .gap-20 {
@@ -405,6 +451,12 @@ ul {
     opacity: 1;
 }
 
+.navbar .col-30 {
+    align-items: flex-start;
+    justify-content: space-between;
+    display: flex;
+}
+
 .navbarRight {
     position: relative;
     display: flex;
@@ -509,9 +561,10 @@ header {
 }
 
 .project-icon {
-    width: 50px;
-    height: 50px;
-    margin-right: 25px;
+    width: 3.125rem;
+    height: 3.125rem;
+    margin-right: 1.5625rem;
+    margin-bottom: 0.75rem;
 }
 
 .project-icon img {
@@ -528,7 +581,7 @@ header {
     background-color: var(--light-gray-color);
     padding: 10px;
     border-radius: 5px;
-    margin-top: 15px;
+    margin-top: 1rem;
     transition: background-color 0.3s ease;
 }
 

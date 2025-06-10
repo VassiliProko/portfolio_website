@@ -19,15 +19,27 @@ window.addEventListener('DOMContentLoaded', function() {
         const deg = ((vw - minW) / (maxW - minW)) * (maxDeg - minDeg) + minDeg;
         document.querySelector('.vp-bg').style.transform = `translateX(0) rotate(${deg}deg)`;
     }
-    
+
+    // Check for mobile devices or reduced motion
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    // Select the element
     const vp = document.querySelector('.vp-bg');
-    if (vp) {
+
+    if (vp && !isMobile && !mediaQuery.matches) {
+        updateVPRotation();
         vp.addEventListener('animationend', function(e) {
             if (e.animationName === 'vpFlyIn') {
-                updateVPRotation();
                 window.addEventListener('resize', updateVPRotation);
             }
         });
+    } else {
+        // Disable animation by setting transform directly
+        if (vp) {
+            vp.style.transform = "translateX(0) rotate(0deg)";
+            vp.style.animation = "none";
+        }
     }
 
     if (window.location.hash === "#main") {
@@ -116,6 +128,12 @@ window.addEventListener('DOMContentLoaded', function() {
         forward = !forward;
         updateCarousel();
     }, 5000);
+    });
+
+    // hamburger menu
+    document.getElementById("menu-toggle").addEventListener("click", function () {
+        document.getElementById("mobile-menu").classList.toggle("show");
+        console.log("Menu toggle clicked!");
     });
 
 });
