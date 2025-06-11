@@ -597,6 +597,7 @@ header {
 
 .project-paragraph {
     max-width: 570px;
+    width: 100%;
 }
 
 .project-paragraph h2 {
