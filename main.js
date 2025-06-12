@@ -83,53 +83,6 @@ window.addEventListener('DOMContentLoaded', function() {
         document.querySelector('header').classList.add('header-visible');
     }, 50);
 
-    document.querySelectorAll('.carousel').forEach(carousel => {
-    const track = carousel.querySelector('.carousel-track');
-    const slides = track.children;
-    const prevBtn = carousel.querySelector('.carousel-arrow.left');
-    const nextBtn = carousel.querySelector('.carousel-arrow.right');
-    const dotsContainer = carousel.querySelector('.carousel-dots');
-
-    let currentSlide = 0;
-
-    // Create dots
-    [...slides].forEach((_, i) => {
-        const dot = document.createElement('div');
-        dot.classList.add('dot');
-        if (i === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => {
-        currentSlide = i;
-        updateCarousel();
-        });
-        dotsContainer.appendChild(dot);
-    });
-
-    const dots = dotsContainer.querySelectorAll('.dot');
-
-    function updateCarousel() {
-        track.style.transform = `translateX(-${currentSlide * 100}%)`;
-        dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
-    }
-
-    nextBtn.addEventListener('click', () => {
-        currentSlide = (currentSlide + 1) % slides.length;
-        updateCarousel();
-    });
-
-    prevBtn.addEventListener('click', () => {
-        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        updateCarousel();
-    });
-
-    // Optional auto-play
-    let forward = true;
-    setInterval(() => {
-        currentSlide = forward ? 1 : 0;
-        forward = !forward;
-        updateCarousel();
-    }, 5000);
-    });
-
     // hamburger menu
     document.getElementById("menu-toggle").addEventListener("click", function () {
         document.getElementById("mobile-menu").classList.toggle("show");
@@ -138,35 +91,15 @@ window.addEventListener('DOMContentLoaded', function() {
 
 });
 
-const images = document.querySelector(".carousel-images");
-const dots = document.querySelectorAll(".carousel-dots li");
-const leftArrow = document.querySelector(".carousel-arrow.left");
-const rightArrow = document.querySelector(".carousel-arrow.right");
+const slider = document.querySelector(".image-comparison .slider");
+const beforeImage = document.querySelector(".image-comparison .before-image");
+const sliderLine = document.querySelector(".image-comparison .slider-line");
+const sliderIcon = document.querySelector(".image-comparison .slider-icon");
 
-let currentIndex = 0;
+slider.addEventListener("input", (e) => {
+    let sliderValue = e.target.value + "%";
 
-function updateCarousel() {
-    images.style.transform = `translateX(-${currentIndex * 100}%)`;
-    dots.forEach((dot, index) => {
-    dot.classList.toggle("active", index === currentIndex);
-    });
-}
-
-leftArrow.addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + dots.length) % dots.length;
-    updateCarousel();
-});
-
-rightArrow.addEventListener("click", () => {
-    currentIndex = (currentIndex + 1) % dots.length;
-    updateCarousel();
-});
-
-dots.forEach((dot, index) => {
-    dot.addEventListener("click", () => {
-    currentIndex = index;
-    updateCarousel();
-    });
-});
-
-updateCarousel(); // initialize
+    beforeImage.style.width = sliderValue;
+    sliderLine.style.left = sliderValue;
+    sliderIcon.style.left = sliderValue;
+})
