@@ -67,6 +67,16 @@ window.addEventListener('DOMContentLoaded', function() {
             label.textContent = 'VIEW';
             cursor.appendChild(label);
         }
+        document.querySelectorAll('.project-image').forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                clearCursorHover();
+                cursor.classList.add('cursor-hover', 'show-label'); // Add both hover and label
+            });
+            link.addEventListener('mouseleave', () => {
+                clearCursorHover();
+                cursor.classList.remove('show-label'); // Remove label on mouse out
+            });
+        });
 
         // Hide cursor when mouse leaves the window
         document.addEventListener('mouseout', function(e) {
