@@ -540,15 +540,8 @@ header {
     background-color: var(--light-gray-color);
     border-radius: 5px;
     aspect-ratio: 2 / 1;
-    overflow: hidden;
-}
-
-.project-image a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+    overflow: hidden !important;
+    max-height: 350px;
 }
 
 .project-image img {
